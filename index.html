@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="tk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemmesi Bizde - Onlaýn Söwda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f6fa;
+            color: #333;
+        }
+
+        /* Ýokarky Menu (Header) */
+        header {
+            background-color: #00b894;
+            color: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .search-bar {
+            width: 100%;
+            display: flex;
+            max-width: 500px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #2d3436;
+            color: white;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Mahabat Banneri */
+        .banner {
+            background: linear-gradient(135deg, #0984e3, #00b894);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 1160px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .banner h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Kategoriýalar */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-item {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #4b5563;
+        }
+
+        .category-item:hover, .category-item.active {
+            background-color: #00b894;
+            color: white;
+        }
+
+        /* Harytlar Bölümi */
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2d3436;
+            border-left: 5px solid #00b894;
+            padding-left: 10px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        /* Haryt Karty */
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e1e8ed;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 160px;
+            background-color: #f1f2f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b2bec3;
+            font-size: 14px;
+        }
+
+        .product-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 40px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #00b894;
+            margin-bottom: 12px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background-color: #2d3436;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #00b894;
+        }
+
+        /* Aşaky Bölüm (Footer) */
+        footer {
+            background-color: #2d3436;
+            color: #b2bec3;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ýokarky Menu -->
+    <header>
+        <div class="header-container">
+            <div class="logo">HEMMESI BIZDE</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Haryt gözle...">
+                <button>Gözle</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mahabat Banneri -->
+    <div class="banner">
+        <h2>Uly Arzanlaşyk Başlandy!</h2>
+        <p>Ähli harytlarda 30%-e çenli garaşylmadyk ýeňillikler siziň üçin.</p>
+    </div>
+
+    <!-- Kategoriýalar -->
+    <div class="categories">
+        <div class="category-item active">Ählisi</div>
+        <div class="category-item">Telefonlar</div>
+        <div class="category-item">Elektronika</div>
+        <div class="category-item">Geýim-Gejim</div>
+        <div class="category-item">Öý goşlary</div>
+    </div>
+
+    <!-- Esasy Harytlar Bölümi -->
+    <main class="main-container">
+        <h3 class="section-title">Täze Gelen Harytlar</h3>
+        
+        <div class="products-grid">
+            <!-- 1-nji Haryt -->
+            <div class="product-card">
+                <div class="product-image">Surat Ýok</div>
+                <div class="product-info">
+                    <div class="product-name">Smartfon Ultra HD 128GB</div>
+                    <div class="product-price">3500 TMT</div>
+                    <button class="add-to-cart">Sebede goş</button>
+                </div>
+            </div>
+
+            <!-- 2-nji Haryt -->
+            <div class="product-card">
+                <div class="product-image">Surat Ýok</div>
+                <div class="product-info">
+                    <div class="product-name">Simsiz Gulaklyk Pro</div>
+                    <div class="product-price">450 TMT</div>
+                    <button class="add-to-cart">Sebede goş</button>
+                </div>
+            </div>
+
+            <!-- 3-nji Haryt -->
+            <div class="product-card">
+                <div class="product-image">Surat Ýok</div>
+                <div class="product-info">
+                    <div class="product-name">Erkek Adam Sport Köýnegi</div>
+                    <div class="product-price">220 TMT</div>
+                    <button class="add-to-cart">Sebede goş</button>
+                </div>
+            </div>
+
+            <!-- 4-nji Haryt -->
+            <div class="product-card">
+                <div class="product-image">Surat Ýok</div>
+                <div class="product-info">
+                    <div class="product-name">Akyly Sagat V8</div>
+                    <div class="product-price">800 TMT</div>
+                    <button class="add-to-cart">Sebede goş</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Aşaky Bölüm -->
+    <footer>
+        <p>&copy; 2026 Hemmesi Bizde. Ähli hukuklar goralan.</p>
+    </footer>
+
+</body>
+</html>
